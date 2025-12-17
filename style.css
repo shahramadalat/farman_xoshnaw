@@ -1,0 +1,181 @@
+:root {
+  --bg-color: #0f1110;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --accent-color: #4ade80; /* A fresh green matching the vibe */
+  --whatsapp-color: #25D366;
+  --telegram-color: #24A1DE;
+  --instagram-gradient: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  --snapchat-color: #FFFC00;
+  --tiktok-color: #000000;
+  --hover-scale: 1.02;
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans Arabic', sans-serif;
+  background-color: var(--bg-color);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(37, 211, 102, 0.05) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(36, 161, 222, 0.05) 0%, transparent 40%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  line-height: 1.6;
+}
+
+.container {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #ffffff, #b3b3b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+h2 {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.link-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  text-decoration: none;
+  color: var(--text-primary);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.link-card:hover {
+  transform: translateY(-2px) scale(var(--hover-scale));
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+.link-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon-wrapper {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  transition: var(--transition);
+}
+
+.link-card svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Specific Brand Colors - Applied Always */
+.link-card.whatsapp .icon-wrapper {
+  background: var(--whatsapp-color);
+  color: white;
+}
+
+.link-card.telegram .icon-wrapper {
+  background: var(--telegram-color);
+  color: white;
+}
+
+.link-card.instagram .icon-wrapper {
+  background: var(--instagram-gradient);
+  color: white;
+}
+
+.link-card.snapchat .icon-wrapper {
+  background: var(--snapchat-color);
+  color: black;
+}
+
+.link-card.tiktok .icon-wrapper {
+  background: white;
+  color: black;
+}
+
+/* Hover effects can now just be a slight scale or brightness bump */
+.link-card:hover .icon-wrapper {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Arrow Icon */
+.arrow-icon {
+  opacity: 0.5;
+  transition: var(--transition);
+}
+
+.link-card:hover .arrow-icon {
+  opacity: 1;
+  transform: translateX(-5px); /* Moving left because RTL context usually, but if dir=ltr then right. 
+                                  Wait, user text is Kurdish (RTL). I will start with standard transform. */
+}
+
+/* RTL Adjustment if needed */
+[dir="rtl"] .link-card:hover .arrow-icon {
+  transform: translateX(-5px); 
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
